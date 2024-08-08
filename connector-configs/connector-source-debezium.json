@@ -1,0 +1,20 @@
+{
+    "name": "debezium-source",
+    "config": {
+        "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+        "database.hostname": "postgres",
+        "database.port": "5432",
+        "database.user": "postgres",
+        "database.password": "postgres",
+        "database.dbname": "postgres",
+        "topic.prefix": "debezium",
+        "table.include.list": "public.user_profile",
+        "tombstones.on.delete": true,
+        "plugin.name": "pgoutput",
+        "transforms": "unwrap,extractId",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "transforms.unwrap.drop.tombstones": false,
+        "transforms.extractId.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+        "transforms.extractId.field": "id"
+    }
+}

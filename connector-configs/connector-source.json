@@ -1,0 +1,19 @@
+{
+    "name": "jdbc-source",
+    "config": {
+        "connector.class": "io.aiven.connect.jdbc.JdbcSourceConnector",
+        "tasks.max": "1",
+        "connection.url": "jdbc:postgresql://postgres:5432/postgres",
+        "connection.user": "postgres",
+        "connection.password": "postgres",
+        "dialect.name": "PostgreSqlDatabaseDialect",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "mode": "timestamp+incrementing",
+        "topic.prefix": "aiven.",
+        "table.whitelist": "public.user_profile",
+        "incrementing.column.name": "id",
+        "timestamp.column.name": "created_at",
+        "validate.non.null": false
+    }
+}
